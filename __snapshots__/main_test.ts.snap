@@ -1,0 +1,79 @@
+export const snapshot = {};
+
+snapshot[`init db 1`] = `
+ResultSetImpl {
+  columnTypes: [
+    "TEXT",
+    "TEXT",
+    "TEXT",
+    "INT",
+    "TEXT",
+  ],
+  columns: [
+    "type",
+    "name",
+    "tbl_name",
+    "rootpage",
+    "sql",
+  ],
+  lastInsertRowid: undefined,
+  rows: [
+    {
+      name: "kv_cache",
+      rootpage: 2,
+      sql: "CREATE TABLE kv_cache (
+    key text primary key,
+    value text not null,
+    metadata text not null,
+    expires_at integer,
+    created_at integer
+  ) strict",
+      tbl_name: "kv_cache",
+      type: "table",
+    },
+    {
+      name: "sqlite_autoindex_kv_cache_1",
+      rootpage: 3,
+      sql: null,
+      tbl_name: "kv_cache",
+      type: "index",
+    },
+    {
+      name: "kv_cache_expires_at",
+      rootpage: 4,
+      sql: "CREATE INDEX kv_cache_expires_at on kv_cache(expires_at)",
+      tbl_name: "kv_cache",
+      type: "index",
+    },
+    {
+      name: "kv_cache_created_at",
+      rootpage: 5,
+      sql: "CREATE INDEX kv_cache_created_at on kv_cache(created_at)",
+      tbl_name: "kv_cache",
+      type: "index",
+    },
+  ],
+  rowsAffected: 0,
+}
+`;
+
+snapshot[`init db 2`] = `
+ResultSetImpl {
+  columnTypes: [
+    "TEXT",
+    "TEXT",
+  ],
+  columns: [
+    "value",
+    "metadata",
+  ],
+  lastInsertRowid: undefined,
+  rows: [
+    {
+      metadata: '{"ttl":1000,"swr":1000,"createdTime":1000000}',
+      value: '"hello"',
+    },
+  ],
+  rowsAffected: 0,
+}
+`;
